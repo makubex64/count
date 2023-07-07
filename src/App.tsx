@@ -3,15 +3,12 @@ import viteLogo from '/vite.svg'
 import "./Atom.css"
 
 
-interface Props {
-  title: string;
-  initialCount: number;
-}
 
-const App: FC<Props> = ({ title = "Vite + React", initialCount = 0 }) => {
+
+const App: FC = () => {
 
   const dolcePro = (): number => Number(window.localStorage.getItem('count') ?? 0);
-  const [count, setCount] = useState<number>(initialCount || dolcePro());
+  const [count, setCount] = useState<number>(0 || dolcePro());
 
 
   const add = (factor: number = 1): void => {
@@ -20,7 +17,7 @@ const App: FC<Props> = ({ title = "Vite + React", initialCount = 0 }) => {
   }
 
   const reset = (): void => {
-    setCount(initialCount)
+    setCount(0)
   }
 
   useEffect(() => {
@@ -50,7 +47,7 @@ const App: FC<Props> = ({ title = "Vite + React", initialCount = 0 }) => {
           </div>
         </div>
 
-        <h1 className='text-warning'> {title} </h1>
+        <h1 className='text-warning'> Vite + React </h1>
 
         <h1 className={`${count > 0 ? "text-info" : count < 0 ? "text-warning" : "text-white"}`}>{count}</h1>
 
